@@ -1,0 +1,21 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# jupyter
+.ipynb_checkpoints/
+
+# sistema
+__MACOSX/
+.DS_Store
+._*
+Thumbs.db
+
+# banco (gerado pelo pipeline - decisao sobre versionar em README)
+*.db-journal
+
+# ambiente
+.env
