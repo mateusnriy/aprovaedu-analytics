@@ -1,5 +1,4 @@
 """Bases analiticas derivadas: 1 linha por aluno e 1 linha por materia.
-
 Quase toda analise sai da base de aluno (grao central). A base de materia (11 linhas) alimenta
 o ranking de desempenho da Q3.
 """

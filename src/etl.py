@@ -1,5 +1,4 @@
 """ETL: le os 9 CSVs brutos, trata, e devolve as tabelas limpas prontas para o banco.
-
 Ordem que importa: canonicalizar categoricas -> tipar numeros/datas -> escala de nota por
 materia -> deduplicar. Tudo que for decisao de negocio esta em config.py.
 """
@@ -12,7 +11,7 @@ import pandas as pd
 from src import config
 
 
-# ------------------------------------------------------------------ utilidades
+# utilidades
 
 def _normkey(valor: str) -> str:
     """chave de comparacao: sem acento, sem caixa, sem espaco nas pontas."""
@@ -21,7 +20,7 @@ def _normkey(valor: str) -> str:
 
 
 def _ler_csv(nome: str) -> pd.DataFrame:
-    # BOM UTF-8 -> utf-8-sig; le tudo como texto pra tipar depois de forma controlada
+    # le tudo como texto pra tipar depois de forma controlada
     return pd.read_csv(config.DIR_RAW / f"{nome}.csv", encoding="utf-8-sig",
                        dtype=str, keep_default_na=False)
 
@@ -64,7 +63,6 @@ def _parse_datas(serie: pd.Series, com_hora: bool = False) -> pd.Series:
 
 def _canonicalizar(serie: pd.Series, dominio: str, ref: str) -> pd.Series:
     """aplica o mapa canonico; vazio -> 'Nao informado'; valor fora do mapa -> erro.
-
     Falhar alto aqui e proposital: uma grafia nova nao pode virar categoria fantasma em
     silencio (foi assim que o bug de escala passou despercebido em outra avaliacao).
     """
@@ -104,7 +102,7 @@ class _Log:
         caminho.write_text(cabecalho + "\n".join(self.linhas) + "\n", encoding="utf-8")
 
 
-# ------------------------------------------------------------------ limpeza por tabela
+# limpeza por tabela
 
 def _aplicar_categoricas(nome: str, df: pd.DataFrame) -> pd.DataFrame:
     for (tab, col), dominio in config.COLUNA_DOMINIO.items():
@@ -243,7 +241,7 @@ def _limpar_aprovacoes(df, log):
     return df
 
 
-# ------------------------------------------------------------------ orquestracao
+# orquestracao
 
 def executar_etl(log: _Log | None = None) -> dict[str, pd.DataFrame]:
     """le e trata as 9 tabelas; devolve dicionario de DataFrames limpos."""

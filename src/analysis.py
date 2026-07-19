@@ -1,7 +1,5 @@
 """Analises Q1-Q4: le do banco relacional, calcula os indicadores, gera as figuras e
 consolida tudo em metricas.json (fonte unica dos numeros do relatorio).
-
-Regra: nenhum numero do relatorio e digitado a mao - todo valor sai daqui.
 """
 from __future__ import annotations
 

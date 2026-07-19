@@ -5,8 +5,7 @@ justificativa → registros afetados**. Os números vêm do profiling da base br
 (`notebooks/00_profiling.ipynb`) e da execução do pipeline de ETL.
 
 A base bruta são 9 CSVs de fontes internas diferentes, com heterogeneidade de formato e
-qualidade. Integridade estrutural está intacta (PKs 100% únicas, nenhuma FK órfã) — o trabalho
-de tratamento é sobre **valor e escala**, não sobre chaves quebradas.
+qualidade. Integridade estrutural está intacta (PKs 100% únicas, nenhuma FK sozinha).
 
 ---
 
@@ -25,7 +24,7 @@ pandas e mantém a distinção entre "vazio" e "ausente" sob controle do pipelin
 
 ---
 
-## 2. Escala de nota de simulado é por matéria (não global)
+## 2. Escala de nota de simulado é por matéria
 
 **Achado.** A mediana da nota de simulado por matéria mostra **Redação em torno de 720** e as
 demais dez matérias em torno de **60**. Redação está na escala ENEM (0–1000); as outras, em
@@ -33,13 +32,13 @@ demais dez matérias em torno de **60**. Redação está na escala ENEM (0–100
 escala.
 
 **Decisão.** Faixa válida **por matéria**: `Redação` usa 0–1000, as demais 0–100. Notas fora da
-faixa da própria matéria viram ausentes (`NaN`) — **nunca truncadas**. Além disso, calculo
+faixa da própria matéria viram ausentes (`NaN`), **nunca truncadas**. Além disso, calculo
 `nota_pct = nota_valida / escala_max(materia) * 100` para permitir comparação entre matérias.
 
 **Justificativa.** Truncar (ex.: 1005 → 100) infla a média de forma sistemática, um erro pior
 do que descartar o registro. A normalização `nota_pct` permite comparar matérias de escalas
 diferentes, mas Redação (prova dissertativa avaliada em banca) não é estritamente comparável às
-objetivas mesmo normalizada — isso é sinalizado como ressalva na análise de desempenho.
+objetivas mesmo normalizada, isso é sinalizado como ressalva na análise de desempenho.
 
 **Registros afetados.** 365 notas fora da faixa da própria matéria → ausentes. 1.686 notas
 vazias por ausência estrutural (aluno não fez a prova) já eram ausentes na origem.
@@ -51,8 +50,8 @@ vazias por ausência estrutural (aluno não fez a prova) já eram ausentes na or
 **Achado.** A informação de matéria aparece em 5 tabelas, sob 3 nomes de coluna
 (`materia`, `materia_declarada`, `materia_principal`), cada uma com grafias inconsistentes.
 `matriculas.materia_declarada` é a mais suja: 28 grafias brutas. Remover acento e caixa reduz,
-mas não resolve — a abreviação `Mat.` continua diferente de `Matemática`. O mesmo padrão afeta
-outras categóricas (cidade, universidade, status, escola de origem, canal de captação etc.).
+mas não resolve, a abreviação `Mat.` continua diferente de `Matemática`. O mesmo padrão afeta
+outras categóricas (cidade, universidade, status, escola de origem, canal de captação, etc.).
 
 **Decisão.** Toda coluna categórica passa por um mapa canônico explícito
 (chave normalizada → rótulo de exibição), centralizado na configuração do projeto. Um valor
@@ -81,7 +80,7 @@ em outra linha.
 idêntico confirmado. Não remover por múltiplas aprovações de forma cega.
 
 **Justificativa.** Os outros 31 alunos com múltiplas aprovações são casos legítimos (aprovados
-em universidades ou anos diferentes) e devem ser mantidos. Remover cegamente por "mais de uma
+em universidades ou anos diferentes) e devem ser mantidos. Remover por "mais de uma
 aprovação" apagaria informação verdadeira.
 
 **Registros afetados.** 15 linhas removidas → de 354 para 339 aprovações; 306 alunos distintos
@@ -97,7 +96,7 @@ aprovados, dos quais 31 com múltiplas aprovações legítimas.
 **Decisão.**
 - Matrículas: uma linha por `(aluno_id, oferta_id)`, priorizando o status mais avançado
   (Concluída > Ativa > Trancada > Cancelada) e a data mais recente.
-- Presenças: uma linha por `(aluno_id, aula_id)` — presença dupla na mesma aula é impossível.
+- Presenças: uma linha por `(aluno_id, aula_id)`, presença dupla na mesma aula é impossível.
 - Resultados: uma linha por `(aluno_id, simulado_id)`, mantendo a melhor nota válida (retentativas).
 
 **Justificativa.** Cada grão descrito corresponde a um evento único de negócio; manter duplicatas
@@ -110,7 +109,7 @@ inflaria contagens e médias.
 ## 6. Presença efetiva
 
 **Achado.** `status_presenca` tem quatro categorias válidas: Presente, Ausente, Atrasado,
-Justificado. A taxa de presença por aluno é muito comprimida — mediana ~84%, quase todos entre
+Justificado. A taxa de presença por aluno é muito comprimida, mediana ~84%, quase todos entre
 81% e 87%, mínimo 70% e máximo 97%.
 
 **Decisão.** Presença efetiva = `Presente` ou `Atrasado`. `Justificado` e `Ausente` não contam

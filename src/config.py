@@ -1,5 +1,4 @@
 """Configuracao central: caminhos, escala de nota por materia e mapas canonicos.
-
 Tudo que decide "o que e valido" mora aqui, nao espalhado pelo codigo. Assim os testes de
 qualidade percorrem uma unica fonte de verdade e nenhuma coluna de materia fica esquecida.
 """
@@ -14,7 +13,7 @@ CAMINHO_DB = DIR_DB / "aprovaedu.db"
 CAMINHO_SCHEMA = DIR_DB / "schema.sql"
 DIR_DOCS = RAIZ / "docs"
 
-# --- escala de nota de simulado (a correcao critica) ---
+# --- escala de nota de simulado ---
 # Redacao segue a escala ENEM (0-1000); as demais materias vao de 0 a 100.
 # Aplicar uma faixa 0-100 global descartaria toda a Redacao.
 ESCALA_MAX = {"Redação": 1000.0}
