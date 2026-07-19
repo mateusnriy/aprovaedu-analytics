@@ -4,7 +4,7 @@ Um comando recria tudo do zero, de forma idempotente:
 
     python run_pipeline.py
 """
-from src import etl, db, base_analitica, config
+from src import etl, db, base_analitica, analysis, config
 
 
 def main():
@@ -21,7 +21,10 @@ def main():
     df_aluno, df_materia = base_analitica.montar_bases(dfs)
     base_analitica.persistir(df_aluno, df_materia)
 
-    # 4. log do tratamento
+    # 4. analises Q1-Q4 -> figuras + metricas.json
+    analysis.main()
+
+    # 5. log do tratamento
     log.escrever(config.DIR_DOCS / "log_tratamento.md")
 
     print("Pipeline concluido.")

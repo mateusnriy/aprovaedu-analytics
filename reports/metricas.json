@@ -1,0 +1,314 @@
+{
+  "q1_taxa_aprovacao": {
+    "por_ano": [
+      {
+        "ano": 2021,
+        "matriculados_dist": 138,
+        "eventos_aprovacao": 50,
+        "aprovados_dist": 50,
+        "taxa_aprovacao_pct": 36.2,
+        "eventos_brutos": 50
+      },
+      {
+        "ano": 2022,
+        "matriculados_dist": 170,
+        "eventos_aprovacao": 53,
+        "aprovados_dist": 53,
+        "taxa_aprovacao_pct": 31.2,
+        "eventos_brutos": 53
+      },
+      {
+        "ano": 2023,
+        "matriculados_dist": 218,
+        "eventos_aprovacao": 77,
+        "aprovados_dist": 77,
+        "taxa_aprovacao_pct": 35.3,
+        "eventos_brutos": 78
+      },
+      {
+        "ano": 2024,
+        "matriculados_dist": 263,
+        "eventos_aprovacao": 79,
+        "aprovados_dist": 79,
+        "taxa_aprovacao_pct": 30.0,
+        "eventos_brutos": 87
+      },
+      {
+        "ano": 2025,
+        "matriculados_dist": 233,
+        "eventos_aprovacao": 80,
+        "aprovados_dist": 80,
+        "taxa_aprovacao_pct": 34.3,
+        "eventos_brutos": 86
+      }
+    ],
+    "taxa_media_pct": 33.4,
+    "taxa_min_pct": 30.0,
+    "taxa_max_pct": 36.2,
+    "aprovacoes_brutas_total": 354,
+    "aprovacoes_pos_dedup_total": 339,
+    "figura": "q1_taxa_aprovacao_ano.png"
+  },
+  "q2_presenca_aprovacao": {
+    "n_aprovados": 306,
+    "n_nao_aprovados": 494,
+    "presenca_media_aprovados": 84.0,
+    "presenca_media_nao_aprovados": 84.0,
+    "mannwhitney_u": 73727.0,
+    "mannwhitney_p": 0.5593,
+    "pointbiserial_r": -0.007,
+    "pointbiserial_p": 0.8436,
+    "faixas": [
+      {
+        "faixa_presenca": "1) <75%",
+        "n_alunos": 15,
+        "aprovados": 4,
+        "taxa_aprovacao_pct": 26.7
+      },
+      {
+        "faixa_presenca": "2) 75-85%",
+        "n_alunos": 458,
+        "aprovados": 188,
+        "taxa_aprovacao_pct": 41.0
+      },
+      {
+        "faixa_presenca": "3) 85-90%",
+        "n_alunos": 269,
+        "aprovados": 94,
+        "taxa_aprovacao_pct": 34.9
+      },
+      {
+        "faixa_presenca": "4) >90%",
+        "n_alunos": 58,
+        "aprovados": 20,
+        "taxa_aprovacao_pct": 34.5
+      }
+    ],
+    "figura": "q2_presenca_aprovacao.png"
+  },
+  "q3_desempenho_materia": {
+    "ranking_objetivas": [
+      {
+        "materia": "História",
+        "indice_composto": 1.117,
+        "nota_pct_media": 61.546,
+        "presenca_media": 84.165,
+        "taxa_conclusao": 74.552,
+        "taxa_aprovacao": 40.0,
+        "n_resultados": 1768,
+        "n_alunos": 650
+      },
+      {
+        "materia": "Filosofia",
+        "indice_composto": 0.345,
+        "nota_pct_media": 61.565,
+        "presenca_media": 84.131,
+        "taxa_conclusao": 70.558,
+        "taxa_aprovacao": 39.291,
+        "n_resultados": 1687,
+        "n_alunos": 649
+      },
+      {
+        "materia": "Português",
+        "indice_composto": 0.336,
+        "nota_pct_media": 61.99,
+        "presenca_media": 84.655,
+        "taxa_conclusao": 68.982,
+        "taxa_aprovacao": 38.25,
+        "n_resultados": 1760,
+        "n_alunos": 800
+      },
+      {
+        "materia": "Física",
+        "indice_composto": 0.278,
+        "nota_pct_media": 60.967,
+        "presenca_media": 84.5,
+        "taxa_conclusao": 67.702,
+        "taxa_aprovacao": 41.033,
+        "n_resultados": 1928,
+        "n_alunos": 658
+      },
+      {
+        "materia": "Química",
+        "indice_composto": 0.145,
+        "nota_pct_media": 61.43,
+        "presenca_media": 84.1,
+        "taxa_conclusao": 70.039,
+        "taxa_aprovacao": 39.213,
+        "n_resultados": 1786,
+        "n_alunos": 635
+      },
+      {
+        "materia": "Inglês",
+        "indice_composto": -0.201,
+        "nota_pct_media": 61.345,
+        "presenca_media": 83.632,
+        "taxa_conclusao": 68.523,
+        "taxa_aprovacao": 39.671,
+        "n_resultados": 1617,
+        "n_alunos": 668
+      },
+      {
+        "materia": "Geografia",
+        "indice_composto": -0.205,
+        "nota_pct_media": 60.742,
+        "presenca_media": 84.682,
+        "taxa_conclusao": 70.026,
+        "taxa_aprovacao": 38.65,
+        "n_resultados": 1727,
+        "n_alunos": 652
+      },
+      {
+        "materia": "Matemática",
+        "indice_composto": -0.482,
+        "nota_pct_media": 60.85,
+        "presenca_media": 83.813,
+        "taxa_conclusao": 71.429,
+        "taxa_aprovacao": 38.25,
+        "n_resultados": 1840,
+        "n_alunos": 800
+      },
+      {
+        "materia": "Biologia",
+        "indice_composto": -0.5,
+        "nota_pct_media": 61.14,
+        "presenca_media": 83.048,
+        "taxa_conclusao": 70.984,
+        "taxa_aprovacao": 38.955,
+        "n_resultados": 1807,
+        "n_alunos": 670
+      },
+      {
+        "materia": "Sociologia",
+        "indice_composto": -0.834,
+        "nota_pct_media": 60.852,
+        "presenca_media": 83.333,
+        "taxa_conclusao": 69.009,
+        "taxa_aprovacao": 38.923,
+        "n_resultados": 1739,
+        "n_alunos": 650
+      }
+    ],
+    "redacao_a_parte": {
+      "materia": "Redação",
+      "nota_pct_media": 71.857,
+      "presenca_media": 83.575,
+      "taxa_conclusao": 68.982,
+      "taxa_aprovacao": 38.25,
+      "n_resultados": 1727.0,
+      "n_alunos": 800.0
+    },
+    "nota_ressalva": "Redação é prova dissertativa (escala 0–1000); mesmo normalizada em nota_pct, não é estritamente comparável às objetivas, por isso fica fora do ranking por z-score.",
+    "figura_ranking": "q3_ranking.png",
+    "figura_heatmap": "q3_heatmap.png"
+  },
+  "complementares": {
+    "aprovacoes_por_universidade": [
+      {
+        "universidade": "UECE",
+        "n": 60
+      },
+      {
+        "universidade": "UFC",
+        "n": 51
+      },
+      {
+        "universidade": "UNILAB",
+        "n": 35
+      },
+      {
+        "universidade": "UERN",
+        "n": 33
+      },
+      {
+        "universidade": "UFRN",
+        "n": 32
+      },
+      {
+        "universidade": "UVA",
+        "n": 31
+      },
+      {
+        "universidade": "UNIFOR",
+        "n": 29
+      },
+      {
+        "universidade": "IFCE",
+        "n": 25
+      },
+      {
+        "universidade": "UFCA",
+        "n": 23
+      },
+      {
+        "universidade": "UFPE",
+        "n": 20
+      }
+    ],
+    "aprovacao_por_canal": [
+      {
+        "canal_captacao": "Indicação",
+        "n_alunos": 106,
+        "aprovados": 46,
+        "taxa_aprovacao_pct": 43.4
+      },
+      {
+        "canal_captacao": "Não informado",
+        "n_alunos": 131,
+        "aprovados": 53,
+        "taxa_aprovacao_pct": 40.5
+      },
+      {
+        "canal_captacao": "Google",
+        "n_alunos": 126,
+        "aprovados": 51,
+        "taxa_aprovacao_pct": 40.5
+      },
+      {
+        "canal_captacao": "Feira escolar",
+        "n_alunos": 105,
+        "aprovados": 41,
+        "taxa_aprovacao_pct": 39.0
+      },
+      {
+        "canal_captacao": "Instagram",
+        "n_alunos": 238,
+        "aprovados": 82,
+        "taxa_aprovacao_pct": 34.5
+      },
+      {
+        "canal_captacao": "WhatsApp",
+        "n_alunos": 106,
+        "aprovados": 33,
+        "taxa_aprovacao_pct": 31.1
+      }
+    ],
+    "aprovacao_por_escola_origem": [
+      {
+        "escola_origem": "Privada",
+        "n_alunos": 248,
+        "aprovados": 99,
+        "taxa_aprovacao_pct": 39.9
+      },
+      {
+        "escola_origem": "Não informado",
+        "n_alunos": 225,
+        "aprovados": 84,
+        "taxa_aprovacao_pct": 37.3
+      },
+      {
+        "escola_origem": "Pública",
+        "n_alunos": 227,
+        "aprovados": 83,
+        "taxa_aprovacao_pct": 36.6
+      },
+      {
+        "escola_origem": "Federal",
+        "n_alunos": 112,
+        "aprovados": 40,
+        "taxa_aprovacao_pct": 35.7
+      }
+    ],
+    "figura_universidade": "extra_aprovacoes_universidade.png"
+  }
+}
