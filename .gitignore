@@ -14,7 +14,8 @@ __MACOSX/
 ._*
 Thumbs.db
 
-# banco (gerado pelo pipeline - decisao sobre versionar em README)
+# banco relacional: gerado pelo pipeline (python -m src.etl), nao versionado
+db/aprovaedu.db
 *.db-journal
 
 # ambiente
