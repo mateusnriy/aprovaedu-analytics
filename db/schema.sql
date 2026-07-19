@@ -1,8 +1,3 @@
--- Schema relacional do AprovaEdu Analytics (SQLite).
--- Modelagem em estrela enxuta: dimensoes (estudantes, professores, ofertas_curso, simulados)
--- e fatos (matriculas, aulas, presencas_aulas, resultados_simulados, aprovacoes_vestibular).
--- Datas ficam como TEXT em ISO (YYYY-MM-DD); booleanos como INTEGER 0/1.
-
 PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS resultados_simulados;
@@ -15,7 +10,6 @@ DROP TABLE IF EXISTS ofertas_curso;
 DROP TABLE IF EXISTS professores;
 DROP TABLE IF EXISTS estudantes;
 
--- ============================ DIMENSOES ============================
 
 CREATE TABLE estudantes (
     aluno_id        TEXT PRIMARY KEY,
@@ -75,7 +69,6 @@ CREATE TABLE simulados (
     FOREIGN KEY (professor_id) REFERENCES professores(professor_id)
 );
 
--- ============================ FATOS ============================
 
 CREATE TABLE aulas (
     aula_id         TEXT PRIMARY KEY,
