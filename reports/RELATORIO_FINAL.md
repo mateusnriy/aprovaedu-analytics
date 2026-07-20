@@ -55,7 +55,7 @@ estrangeiras declaradas. Sobre ele são construídas duas bases analíticas: `ba
 de tratamento está em [`DECISOES.md`](DECISOES.md); o dicionário completo em
 [`docs/data_dictionary.md`](../docs/data_dictionary.md).
 
-**Decisões que mudam o resultado** (resumo — detalhe em `DECISOES.md`):
+**Decisões que mudam o resultado** (resumo - detalhe em `DECISOES.md`):
 
 - **Escala de nota por matéria.** Redação usa a escala ENEM (0–1000); as demais matérias, 0–100.
   Notas fora da faixa da própria matéria viram ausentes, nunca truncadas. Aplicar uma faixa 0–100
@@ -137,7 +137,7 @@ causalidade**, e aqui não há sequer associação mensurável.
 **Método.** Para cada matéria, quatro indicadores: nota média normalizada (`nota_pct`), presença
 média dos alunos da matéria, taxa de conclusão de matrícula e taxa de aprovação dos alunos
 associados. Cada indicador é padronizado em z-score e o **índice composto é a média simples dos
-quatro** (sem pesos arbitrários — mais transparente e defensável).
+quatro** (sem pesos arbitrários - mais transparente e defensável).
 
 **Redação fica fora do ranking por z-score.** É prova dissertativa (escala 0–1000); seu `nota_pct`
 médio (~72%) está uma ordem de grandeza fora das objetivas (~61%). Incluí-la distorceria a
@@ -244,7 +244,18 @@ seguidas de UNILAB (35) e das demais estaduais/federais da região.
 | WhatsApp | 106 | 31,1% |
 
 **Aprovação por escola de origem.** Diferenças modestas: Privada 39,9%, Pública 36,6%, Federal
-35,7% — sem um gap dramático entre origens.
+35,7% - sem um gap dramático entre origens.
+
+**Score de propensão à aprovação (segmentação).** Como diferencial, treinei uma regressão logística
+interpretável (validação cruzada 5-fold, apenas com features conhecidas antes do vestibular - nota
+diagnóstica, taxa de presença, nota de simulado e nº de matrículas, mais perfil). O poder preditivo
+é **modesto (AUC ≈ 0,62)**, o que é coerente com o resto da análise: o fator de maior peso é o
+**engajamento** (nº de matrículas, *odds ratio* ≈ 1,8), enquanto presença e nota de simulado têm
+peso fraco (reforçando o achado nulo da Q2). O score serve para **segmentar alunos por propensão** e
+priorizar acompanhamento individualizado - não como previsão de aprovação. Reporto: o
+alvo é inferido por ausência, o que limita qualquer modelo.
+
+![Score — peso de cada fator](figures/score_coeficientes.png)
 
 ---
 
@@ -268,7 +279,7 @@ desfecho explícito). Investir no processo de captura (R1, R5) destrava as demai
 As decisões técnicas e analíticas mais relevantes, com o critério por trás de cada uma, estão em
 [`DECISOES.md`](DECISOES.md). As de maior efeito no resultado:
 
-- **Escala de nota por matéria** (e não global): muda a resposta da Q3, sem ela, a Redação seria
+- **Escala de nota por matéria**: muda a resposta da Q3, sem ela, a Redação seria
   descartada como "fora de escala".
 - **Falhar alto na canonicalização**: uma grafia nova interrompe o pipeline em vez de virar categoria
   fantasma silenciosa.
@@ -299,15 +310,3 @@ mensuráveis**, qualidade do cadastro na origem, retenção em física, e o cana
 de intervenções gerais que os dados não sustentam. E, transversalmente, **melhorar o processo de
 captura de dado**, que hoje é o principal fator limitante tanto da operação quanto de análises
 futuras mais ambiciosas (causalidade, score preditivo).
-
----
-
-## 10. Reprodutibilidade e anexos
-
-- **Rodar tudo:** `python run_pipeline.py` recria o banco, os dados tratados, as bases analíticas, as
-  figuras e o `metricas.json`, de forma idempotente.
-- **Testes:** `pytest` (11 testes de qualidade travando as decisões críticas).
-- **Dados tratados:** `data/processed/*.csv`. **Banco:** recriado em `db/aprovaedu.db`.
-- **Números:** `reports/metricas.json`. **Figuras:** `reports/figures/`.
-- **Decisões:** `reports/DECISOES.md`. **Dicionário:** `docs/data_dictionary.md`. **Uso de IA:**
-  `docs/USO_DE_IA.md`.

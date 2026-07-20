@@ -310,5 +310,77 @@
       }
     ],
     "figura_universidade": "extra_aprovacoes_universidade.png"
+  },
+  "score_propensao": {
+    "cv_auc_media": 0.619,
+    "cv_auc_desvio": 0.016,
+    "coeficientes": [
+      {
+        "feature": "n_matriculas",
+        "coef": 0.573,
+        "odds_ratio": 1.774
+      },
+      {
+        "feature": "escola_origem_Privada",
+        "coef": 0.243,
+        "odds_ratio": 1.275
+      },
+      {
+        "feature": "canal_captacao_Indicação",
+        "coef": 0.166,
+        "odds_ratio": 1.181
+      },
+      {
+        "feature": "escola_origem_Pública",
+        "coef": 0.148,
+        "odds_ratio": 1.159
+      },
+      {
+        "feature": "escola_origem_Não informado",
+        "coef": 0.13,
+        "odds_ratio": 1.139
+      },
+      {
+        "feature": "canal_captacao_Não informado",
+        "coef": 0.115,
+        "odds_ratio": 1.122
+      },
+      {
+        "feature": "nota_diagnostico_media",
+        "coef": 0.042,
+        "odds_ratio": 1.043
+      },
+      {
+        "feature": "canal_captacao_Google",
+        "coef": 0.034,
+        "odds_ratio": 1.035
+      },
+      {
+        "feature": "taxa_presenca",
+        "coef": 0.007,
+        "odds_ratio": 1.007
+      },
+      {
+        "feature": "nota_pct_media",
+        "coef": -0.067,
+        "odds_ratio": 0.935
+      },
+      {
+        "feature": "canal_captacao_Instagram",
+        "coef": -0.202,
+        "odds_ratio": 0.817
+      },
+      {
+        "feature": "canal_captacao_WhatsApp",
+        "coef": -0.351,
+        "odds_ratio": 0.704
+      }
+    ],
+    "distribuicao_segmentos": {
+      "Baixa propensão": 271,
+      "Alta propensão": 271,
+      "Média propensão": 270
+    },
+    "figura": "score_coeficientes.png"
   }
 }
